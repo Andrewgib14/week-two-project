@@ -13,8 +13,7 @@ function question1() {
   for (let i = 0; i < data.length; i++) {
     total_price += data[i].price;
   }
-  console.log(total_price / data.length);
-  return (total_price / data.length);
+  console.log("$" + Math.round((total_price / data.length) * 100) / 100);
 }
 
 
@@ -26,11 +25,11 @@ function question2() {
 
   for (let i = 0; i < data.length; i++) {
     if (data[i].price <= 18 && data[i].price >= 14) {
-      myArray.push(data[i]);
+      myArray.push(data[i].title);
+      console.log(data[i].title);
     }
   }
-  console.log(myArray);
-  return myArray;
+
 }
 
 
@@ -44,9 +43,7 @@ function question3() {
       gBP_code = data[i];
     }
   }
-  console.log(gBP_code.title);
-  console.log(gBP_code.price);
-  return gBP_code;
+  console.log(gBP_code.title + " $" + gBP_code.price);
 }
 
 
@@ -57,10 +54,9 @@ function question4() {
   for (let i = 0; i < data.length; i++) {
     if (data[i].materials.includes("wood")) {
       woodArray.push(data[i]);
+      console.log(data[i].title);
     }
   }
-  console.log(woodArray);
-  return woodArray;
 }
 
 
@@ -70,12 +66,13 @@ function question4() {
 //    Display the name, number of items and the items it is made of.
 function question5() {
   // Answer:
-  let lrgItemArray
   for (let i = 0; i < data.length; i++) {
     if (data[i].materials.length >= 8) {
-      console.log(data[i].title);
-      console.log(data[i].materials.length)
-      console.log(data[i].materials);
+      console.log(data[i].title + ' has ' + data[i].materials.length + ' materials.');
+      console.log()
+      for (let x = 0; x < data[i].materials.length; x++) {
+        console.log("-" + data[i].materials[x]);
+      }
     }
   }
 }
@@ -88,7 +85,7 @@ function question6() {
   let itemCount = 0;
   for (let i = 0; i < data.length; i++) {
     if (data[i].who_made === "i_did") {
-      itemCount++
+      itemCount++;
     }
   }
   console.log(itemCount + " items were made by there sellers.");
